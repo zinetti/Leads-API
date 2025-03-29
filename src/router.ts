@@ -1,20 +1,10 @@
 import { Router } from "express";
-import { HttpError } from "./errors/HttpError";
-import { LeadsController } from "./controllers/LeadsController";
-import { GroupController } from "./controllers/GroupController";
-import { CampaignsController } from "./controllers/CampaignsController";
-import { CampaignLeadsController } from "./controllers/CampaignLeadsController";
-import { GroupLeadsController } from "./controllers/GroupLeadsController";
+import { campaignLeadsController, campaignsController, groupController, groupLeadsController, leadsController } from "./container";
+
 
 
 const router = Router()
 
-//Importa o controller
-const leadsController = new LeadsController()
-const groupController = new GroupController()
-const campaignsController = new CampaignsController()
-const campaignLeadsController = new CampaignLeadsController()
-const groupLeadsController = new GroupLeadsController()
 
 router.get("/leads", leadsController.index)
 router.post("/leads", leadsController.create)
@@ -43,22 +33,5 @@ router.post("/campaigns/:campaignId/leads", campaignLeadsController.addLead)
 router.put("/campaigns/:campaignId/leads/:leadId", campaignLeadsController.updateLeadStatus)
 router.delete("/campaigns/:campaignId/leads/:leadId", campaignLeadsController.removeLead)
 
-
-
-
-
-
-
-
-router.get("/teste", async (req, res, next) => {
-
-    try {
-        throw new HttpError(401, "Nao autorizado")
-        res.json({message: "Ok"})
-        
-    } catch (error) {
-        next(error)
-    }
-})
 
 export { router }
