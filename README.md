@@ -1,4 +1,4 @@
-# 📌 API com Node.js, TypeScript e Prisma
+# 📌 API Rest com Node.js, TypeScript e Prisma
 
 Este projeto é uma API construída com **Node.js**, **TypeScript** e **Prisma**, utilizando **Express** para gerenciamento de rotas e **Zod** para validação de dados.
 
